@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Diagnoz!</h1>
+  <p class="lead">Enter your symptoms and get an accurate assessment of your health with Diagnoz! Our database uses scientific literature and statistical data from thousands of patient cases to provide you with the most likely diagnoses and their percentage chance. It's fast, free, and anonymous. Start your checkup now and take control of your health!</p>
+  <hr class="my-4">
+  <p>	Don’t let symptoms keep you guessing. Try Diagnoz today!</p>
+  <a class="btn btn-primary btn-lg" href="{{url_for('symptoms')}}" role="button">Start Diagnosing</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1 class="text-primary">Disease Predictor - Result</h1>
+    <h2 class="text-secondary">Possible diseases:</h2>
+    <ul class="list-group">
+        {% for key in keys %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ key[0] }}
+                <span class="badge bg-info">{{ key[1] }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary btn-lg" href="{{url_for('symptoms')}}" role="button" >Try Again</a>
+
+
+{% endblock %}
