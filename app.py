@@ -8,42 +8,66 @@ app = Flask(__name__)
 
 # Read the CSV file and create a dictionary of diseases and their symptoms
 Diseases_dict = {}
-with open('dataset.csv', mode='r') as csv_file:
+symptoms_list = [] #Used when user wants list of symptoms only.
+with open('C:\\Users\\yassi\\Downloads\\Flask-tut-bing\\Flask-Disease\\dataset.csv', mode='r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
         Diseases_dict[line[0]] = line[1:]
+        symptoms_list.append(line[1:])  
+sy_list = []
+sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
+sy_list = sy_list.split(" ")
+new_sy_list = []
+new_sy_list = set(sy_list) 
+
+
+
+
 
 # Function to format the symptoms entered by the user
 def format_symptoms(sy):
     # Split the symptoms into a list
-    sy = sy.split(' ')
+    sy = sy.split(',')
+    
     # Convert each symptom to lowercase and remove any leading/trailing spaces
     sy = [i.lower().strip() for i in sy]
+    
+
+    
     return sy
 
 # Function to get a list of possible diseases based on the symptoms entered by the user
-def get_diseases(symptoms_str):
+def get_diseases(symptoms_list):
     dict_count = {}
-    for key, value in Diseases_dict.items():
-        count = 0
-        for symptom in symptoms_str:
-            symptom = symptom.strip()
-            if symptom in value:
-                count += 1
-        if count > 0:
-            dict_count[key] = count
+    
+   
+    new_symptoms_list = [i.strip("']").strip("['").replace(" ","_") for i in symptoms_list]
+ 
+    
+
+    for sym in new_symptoms_list:
+        
+        for key, value in Diseases_dict.items():
+            if sym in value:
+                
+                try:
+                    dict_count[key] += 1
+                except Exception as e:
+                    dict_count[key] = 1
+            
+    
     # Calculate the percentage of symptoms matched for each disease
     diseases_dict_percent = {i:get_percent(i,dict_count) for i in dict_count.keys()}
+
+    
     # Sort the diseases in descending order of percentage matched
-    sorted_diseases = sorted(diseases_dict_percent.items(), key=lambda x: x[1], reverse=True)
+    sorted_diseases = sorted(diseases_dict_percent.items(), key=lambda x: int(dict_count[x[0]])/len(Diseases_dict[x[0]]), reverse=True)
+    
     return sorted_diseases
 
 # Function to calculate the percentage of symptoms matched for a disease
 def get_percent(disease,dict):
-    percent = round(dict[disease] / len(Diseases_dict[disease])*100)
-    if len(str(percent))==1:
-        percent = f'0{percent}'
-    return f'is {percent}%'
+    return f'has {dict[disease]} symptoms out of {len(Diseases_dict[disease])} '
 
 # Route for the home page
 @app.route('/')
@@ -67,12 +91,18 @@ def symptoms():
 def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
-    ic(symptoms) # Print the formatted symptoms using the icecream module
+
     # Get a list of possible diseases based on the symptoms entered by the user
-    diseases_final = get_diseases(symptoms_str=symptoms)
-    ic(diseases_final) # Print the list of diseases and their percentage matched using the icecream module
+    diseases_final = get_diseases(symptoms_list=symptoms)
+
     # Display the diseases page with the list of diseases
     return render_template('diseases.html',keys=diseases_final)
+
+@app.route('/symptoms_set')
+def symptoms_set():
+    sy_list = list(new_sy_list)
+    
+    return render_template('symptoms_set.html',sys=sy_list)
 
 # Route for the about page
 @app.route('/about')
