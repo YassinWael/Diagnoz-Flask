@@ -9,9 +9,10 @@ app = Flask(__name__)
 # Read the CSV file and create a dictionary of diseases and their symptoms
 Diseases_dict = {}
 symptoms_list = [] #Used when user wants list of symptoms only.
-with open('C:\\Users\\yassi\\Downloads\\Flask-tut-bing\\Flask-Disease\\dataset.csv', mode='r') as csv_file:
+with open(r'C:\Users\yassi\Downloads\Flask-tut-bing\Flask-Disease\cleaned_data.csv', mode='r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
+       
         Diseases_dict[line[0]] = line[1:]
         symptoms_list.append(line[1:])  
 sy_list = []
@@ -98,6 +99,10 @@ def diseases(sy):
     # Display the diseases page with the list of diseases
     return render_template('diseases.html',keys=diseases_final)
 
+@app.route('/learnmore/<disease>')
+def learnmore(disease):
+    pass
+
 @app.route('/symptoms_set')
 def symptoms_set():
     sy_list = list(new_sy_list)
@@ -108,6 +113,11 @@ def symptoms_set():
 @app.route('/about')
 def about():
     return render_template('about.html',title = 'About')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 # Run the Flask app
 if __name__ == '__main__':
