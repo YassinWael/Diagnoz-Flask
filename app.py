@@ -9,7 +9,9 @@ app = Flask(__name__)
 # Read the CSV file and create a dictionary of diseases and their symptoms
 Diseases_dict = {}
 symptoms_list = [] #Used when user wants list of symptoms only.
-with open(r'C:\Users\yassi\Downloads\Flask-tut-bing\Flask-Disease\cleaned_data.csv', mode='r') as csv_file:
+Diseases_info = {}
+datasets_path = r'C:\Users\yassi\Downloads\Flask-tut-bing\Flask-Disease\datasets'
+with open(rf'{datasets_path}\dataset.csv', mode='r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
        
@@ -20,8 +22,13 @@ sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
 sy_list = sy_list.split(" ")
 new_sy_list = []
 new_sy_list = set(sy_list) 
-
-
+                         
+with open(rf'{datasets_path}\symptom_Description.csv') as csv_file:
+    csv_reader = csv.reader(csv_file)
+    for line in csv_reader:
+            
+            Diseases_info[line[0].replace(' ',"")] = line[1]
+        
 
 
 
@@ -93,15 +100,21 @@ def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
 
+    #Global the variable so it can be used in the learn_more page
+    global diseases_final 
+
     # Get a list of possible diseases based on the symptoms entered by the user
-    diseases_final = get_diseases(symptoms_list=symptoms)
+    diseases_final = get_diseases(symptoms_list=symptoms) 
 
     # Display the diseases page with the list of diseases
     return render_template('diseases.html',keys=diseases_final)
 
-@app.route('/learnmore/<disease>')
-def learnmore(disease):
-    pass
+@app.route('/learnmore/<disease>',methods = ['GET','POST'])
+def learn_more(disease):
+    
+    return render_template('learn_more.html',info = Diseases_info[disease],name = disease)
+    
+        
 
 @app.route('/symptoms_set')
 def symptoms_set():

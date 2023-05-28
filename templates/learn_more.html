@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card-container">
+    <h2>{{ name }}</h2>
+    <p>{{ info }}</p>
+    
+  </div>
+  <a href="javascript:window.history.back();" role = button class = 'btn btn-primary btn-lg p-4 mt-lg-3 btn-rounded'>Go Back</a>
+</div>
+{% endblock %}
