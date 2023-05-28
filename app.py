@@ -12,23 +12,43 @@ symptoms_list = [] #Used when user wants list of symptoms only.
 Diseases_info = {}
 datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/Flask-Disease/datasets'
 host_path = r"/home/Diagnoz/mysite/datasets"
-with open(rf'{datasets_path}/dataset.csv', mode='r') as csv_file:
-    csv_reader = csv.reader(csv_file)
-    for line in csv_reader:
-       
-        Diseases_dict[line[0]] = line[1:]
-        symptoms_list.append(line[1:])  
+
+try:
+    with open(rf'{datasets_path}/dataset.csv', mode='r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+        
+            Diseases_dict[line[0]] = line[1:]
+            symptoms_list.append(line[1:])  
+    
+
+    with open(rf'{datasets_path}/symptom_Description.csv') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+                
+                Diseases_info[line[0].replace(' ',"")] = line[1]
+except FileNotFoundError:
+    with open(rf'{host_path}/dataset.csv', mode='r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+        
+            Diseases_dict[line[0]] = line[1:]
+            symptoms_list.append(line[1:])  
+    
+
+    with open(rf'{host_path}/symptom_Description.csv') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+                
+                Diseases_info[line[0].replace(' ',"")] = line[1]
+
 sy_list = []
 sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
 sy_list = sy_list.split(" ")
 new_sy_list = []
 new_sy_list = set(sy_list) 
                          
-with open(rf'{datasets_path}/symptom_Description.csv') as csv_file:
-    csv_reader = csv.reader(csv_file)
-    for line in csv_reader:
-            
-            Diseases_info[line[0].replace(' ',"")] = line[1]
+
         
 
 
