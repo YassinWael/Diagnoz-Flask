@@ -1,7 +1,7 @@
 # Import necessary modules
 from flask import Flask, render_template, request, redirect, url_for
 import csv
-from icecream import ic
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -10,8 +10,9 @@ app = Flask(__name__)
 Diseases_dict = {}
 symptoms_list = [] #Used when user wants list of symptoms only.
 Diseases_info = {}
-datasets_path = r'C:\Users\yassi\Downloads\Flask-tut-bing\Flask-Disease\datasets'
-with open(rf'{datasets_path}\dataset.csv', mode='r') as csv_file:
+datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/Flask-Disease/datasets'
+host_path = r"/home/Diagnoz/mysite/datasets"
+with open(rf'{datasets_path}/dataset.csv', mode='r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
        
@@ -23,7 +24,7 @@ sy_list = sy_list.split(" ")
 new_sy_list = []
 new_sy_list = set(sy_list) 
                          
-with open(rf'{datasets_path}\symptom_Description.csv') as csv_file:
+with open(rf'{datasets_path}/symptom_Description.csv') as csv_file:
     csv_reader = csv.reader(csv_file)
     for line in csv_reader:
             
