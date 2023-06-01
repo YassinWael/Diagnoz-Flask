@@ -7,7 +7,7 @@
     <ul class="list-group">
         {% for key in keys %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="btn btn-primary btn-lg btn-rounded diseases-btn" href="{{ url_for('learn_more',disease=key[0]) }}"  role="button" >Learn more</a>
+                <a class="btn btn-primary btn-lg btn-rounded btn-diseases" href="{{ url_for('learn_more',disease=key[0]) }}"  role="button" >Learn more</a>
                 {{ key[0] }}
                 <span class="badge bg-info">{{ key[1] }}</span>
             </li>

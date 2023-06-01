@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <a onclick="history.back()" role="button" class="btn btn-primary btn-rounded btn-diseases" style="position: absolute;right:0">Go Back</a>
     <ul class="list-group">
         {% for symptom in sys %}
             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
