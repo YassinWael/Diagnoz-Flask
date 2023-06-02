@@ -31,8 +31,7 @@ transition: transform 0.2s ease-in-out;
   .btn-diseases {
     position: static;
     transform: scale(0.85);
-    color:blanchedalmond;
-    ;
+    
   }
 
 
@@ -57,6 +56,20 @@ transition: transform 0.2s ease-in-out;
     height: 100px;
     background-size: contain;
     transform: scale(0.9);
+  }
+
+  .btn-choose-symptom {
+    padding: 10px;
+    margin-bottom: 10px;
+
+  }
+
+  .btn-choose-symptom:active {
+
+    background-color: royalblue ;
+
+
+
   }
 
   

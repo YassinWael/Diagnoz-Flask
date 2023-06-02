@@ -1,18 +1,25 @@
-# Import necessary modules
+# Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for
 import csv
 
-
-# Initialize Flask app
+# Create a new Flask app instance
 app = Flask(__name__)
 
-# Read the CSV file and create a dictionary of diseases and their symptoms
+# Define a dictionary that maps diseases to associated symptoms
 Diseases_dict = {}
-symptoms_list = [] #Used when user wants list of symptoms only.
+
+# Define a list to store symptoms when user wants list of symptoms only
+symptoms_list = []
+
+# Define a dictionary to store information on each disease
 Diseases_info = {}
+
+# Define paths to datasets
 datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/Flask-Disease/datasets'
 host_path = r"/home/Diagnoz/mysite/datasets"
 
+# Define an empty list to store chosen symptoms
+chosen_symptoms = []
 try:
     with open(rf'{datasets_path}/dataset.csv', mode='r') as csv_file:
         csv_reader = csv.reader(csv_file)
@@ -42,69 +49,64 @@ except FileNotFoundError:
                 
                 Diseases_info[line[0].replace(' ',"")] = line[1]
 
-sy_list = []
+# Join all symptoms in symptoms_list into a single string
 sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
+
+# Split the string into a list of individual symptoms
 sy_list = sy_list.split(" ")
-new_sy_list = []
+
+# Remove any symptoms that contain the word "Symptom"
+sy_list = [i for i in sy_list if 'Symptom' not in i.split('_')]
+
+# Create a new set to store unique symptoms
 new_sy_list = set(sy_list) 
-                         
-
-        
-
-
 
 # Function to format the symptoms entered by the user
 def format_symptoms(sy):
     # Split the symptoms into a list
     sy = sy.split(',')
-    
-    # Convert each symptom to lowercase and remove any leading/trailing spaces
+   
+    # Convert all symptoms to lowercase and remove any leading/trailing whitespace
     sy = [i.lower().strip() for i in sy]
-    
-
     
     return sy
 
-# Function to get a list of possible diseases based on the symptoms entered by the user
+# Function to determine possible diagnoses based on entered symptoms
 def get_diseases(symptoms_list):
+    # Create a dictionary to count the number of times each disease appears
     dict_count = {}
     
-   
+    # Convert all symptoms to a format that matches the keys in Diseases_dict
     new_symptoms_list = [i.strip("']").strip("['").replace(" ","_") for i in symptoms_list]
- 
     
-
+    # Loop through all symptoms and diseases to count the number of matches
     for sym in new_symptoms_list:
-        
         for key, value in Diseases_dict.items():
             if sym in value:
-                
                 try:
                     dict_count[key] += 1
                 except Exception as e:
                     dict_count[key] = 1
             
-    
-    # Calculate the percentage of symptoms matched for each disease
+    # Create a dictionary that maps diseases to the percentage of symptoms matched
     diseases_dict_percent = {i:get_percent(i,dict_count) for i in dict_count.keys()}
 
-    
-    # Sort the diseases in descending order of percentage matched
+    # Sort the diseases by the percentage of symptoms matched
     sorted_diseases = sorted(diseases_dict_percent.items(), key=lambda x: int(dict_count[x[0]])/len(Diseases_dict[x[0]]), reverse=True)
     
     return sorted_diseases
 
-# Function to calculate the percentage of symptoms matched for a disease
+# Function to calculate the percentage of symptoms matched for a given disease
 def get_percent(disease,dict):
     return f'has {dict[disease]} symptoms out of {len(Diseases_dict[disease])} '
 
-# Route for the home page
+# Define a route for the home page
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
 
-# Route for the symptoms page
+# Define a route for the symptoms page
 @app.route('/symptoms', methods=['GET', 'POST'])
 def symptoms():
     if request.method == "POST":
@@ -115,43 +117,57 @@ def symptoms():
         # Display the symptoms page
         return render_template("symptoms.html")
 
-# Route for the diseases page
+# Define a route for the diseases page
 @app.route('/diseases/<sy>')
 def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
 
-    #Global the variable so it can be used in the learn_more page
+    # Get possible diagnoses based on the entered symptoms
     global diseases_final 
-
-    # Get a list of possible diseases based on the symptoms entered by the user
     diseases_final = get_diseases(symptoms_list=symptoms) 
 
-    # Display the diseases page with the list of diseases
+    # Render the diseases page with the list of possible diagnoses
     return render_template('diseases.html',keys=diseases_final)
 
+# Define a route for the learn more page
 @app.route('/learnmore/<disease>',methods = ['GET','POST'])
 def learn_more(disease):
-    
+    # Render the learn more page with information on the selected disease
     return render_template('learn_more.html',info = Diseases_info[disease],name = disease)
-    
-        
 
+# Define a route for the symptoms set page
 @app.route('/symptoms_set')
 def symptoms_set():
+    # Convert the set of unique symptoms to a list and render the symptoms set page
     sy_list = list(new_sy_list)
-    
     return render_template('symptoms_set.html',sys=sy_list)
 
-# Route for the about page
+# Define a route for the about page
 @app.route('/about')
 def about():
     return render_template('about.html',title = 'About')
 
+# Define a route for the choose page
+@app.route('/choose')
+def choose():
+    # Sort the list of unique symptoms and render the choose page
+    sy_list = sorted(new_sy_list)
+    return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list)
+
+# Define a route for adding a symptom to the chosen symptoms list
+@app.route('/add_symptom', methods=['POST'])
+def add_symptom():
+    symptom = request.form['symptom']
+
+    # Add the symptom to the chosen symptoms list and redirect to the choose page
+    chosen_symptoms.append(symptom)
+    return redirect(url_for('choose',chosen_list=chosen_symptoms))
+
+# Define a route for the contact page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
-
 
 # Run the Flask app
 if __name__ == '__main__':

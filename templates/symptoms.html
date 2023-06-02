@@ -9,6 +9,7 @@
         <input type="text" class="form-control" id="symptoms" name="sy" placeholder="Please Type Your Symptoms (seperated by comas)">
       </div>
       <button type="submit" class="btn btn-primary btn-rounded btn-diseases" >Submit</button>
+      <a href="{{ url_for('choose') }}" role="button" class="btn btn-secondary btn-rounded "> Choose Symptoms</a>
       <a class = "btn btn-secondary btn-rounded btn-diseases" href="{{url_for('symptoms_set')}}" role="button">List Of Symptoms</a>
     </form>
   </div>
