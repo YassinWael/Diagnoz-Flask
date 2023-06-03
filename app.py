@@ -130,9 +130,15 @@ def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
     print(symptoms)
-    if any(len(i)>1 for i in symptoms): # Used Inputted Empty List
-        flash("Cannot Be Empty!")
-        return redirect(url_for('choose'))
+    for i in symptoms:
+        if len(i)<4:
+            flash("List Can't Be Empty :)")
+            print(i)
+            return redirect(url_for('choose'))
+        else:
+            print(len(i))
+            print("Else")
+            continue
     
     # Get possible diagnoses based on the entered symptoms
     global diseases_final 
