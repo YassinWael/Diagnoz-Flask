@@ -1,6 +1,6 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for,flash
-from icecream import ic
+
 import csv
 
 # Create a new Flask app instance
@@ -140,7 +140,7 @@ def diseases(sy):
 
     # Render the diseases page with the list of possible diagnoses
    
-    ic('ran',sy)
+    
     return render_template('diseases.html',keys=diseases_final,sys=symptoms)
 
 # Define a route for the learn more page
@@ -166,13 +166,13 @@ def about():
 def choose():
     # Sort the list of unique symptoms and render the choose page
     sy_list = sorted(new_sy_list)
-    ic("here")
+    
     return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list)
 
 
 @app.route('/add_symptom/<symptom>')
 def add_symptom(symptom):
-    ic(symptom)
+    
     chosen_symptoms.append(symptom)
     return redirect(url_for('choose'))
 
@@ -183,7 +183,7 @@ def call_diseases():
     return_value = redirect(url_for('diseases',sy=chosen_symptoms))
     
     chosen_symptoms = []
-    ic(chosen_symptoms)
+    
     
     return return_value
 
