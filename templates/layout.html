@@ -1,5 +1,8 @@
 <!-- Layout.html -->
 <!DOCTYPE html>
+
+
+
 <html>
   <head>
     <title>Flask Yassin</title>
@@ -12,6 +15,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
   <body>
+
+
+    {% block flash_msg %}
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+
+            {% block page_content %}{% endblock %}
+        </div>
+    {% endblock %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{{url_for('home')}}"> <img src="https://i.postimg.cc/sXFx1tzz/Diagnoz-Logo-removebg-preview.png" width="260" ></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

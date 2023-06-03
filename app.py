@@ -1,9 +1,11 @@
 # Import the Flask class from the flask module
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,flash
+from icecream import ic
 import csv
 
 # Create a new Flask app instance
 app = Flask(__name__)
+app.secret_key = 'iugegiujegehgdtijoie'
 
 # Define a dictionary that maps diseases to associated symptoms
 Diseases_dict = {}
@@ -104,6 +106,7 @@ def get_percent(disease,dict):
 @app.route('/')
 @app.route('/home')
 def home():
+    
     return render_template('home.html')
 
 # Define a route for the symptoms page
@@ -112,7 +115,11 @@ def symptoms():
     if request.method == "POST":
         # Get the symptoms entered by the user and redirect to the diseases page
         symptoms = request.form["sy"]
-        return redirect(url_for("diseases",sy=symptoms))
+        if len(symptoms)>1: # Used Inputted Empty List
+            flash("Cannot Be Empty!")
+            return render_template('symptoms.html')
+        else:
+            return redirect(url_for("diseases",sy=symptoms))
     else:
         # Display the symptoms page
         return render_template("symptoms.html")
@@ -122,13 +129,19 @@ def symptoms():
 def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
-
+    print(symptoms)
+    if any(len(i)>1 for i in symptoms): # Used Inputted Empty List
+        flash("Cannot Be Empty!")
+        return redirect(url_for('choose'))
+    
     # Get possible diagnoses based on the entered symptoms
     global diseases_final 
     diseases_final = get_diseases(symptoms_list=symptoms) 
 
     # Render the diseases page with the list of possible diagnoses
-    return render_template('diseases.html',keys=diseases_final)
+   
+    ic('ran',sy)
+    return render_template('diseases.html',keys=diseases_final,sys=symptoms)
 
 # Define a route for the learn more page
 @app.route('/learnmore/<disease>',methods = ['GET','POST'])
@@ -149,20 +162,30 @@ def about():
     return render_template('about.html',title = 'About')
 
 # Define a route for the choose page
-@app.route('/choose')
+@app.route('/choose',methods=['GET','POST'])
 def choose():
     # Sort the list of unique symptoms and render the choose page
     sy_list = sorted(new_sy_list)
+    ic("here")
     return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list)
 
-# Define a route for adding a symptom to the chosen symptoms list
-@app.route('/add_symptom', methods=['POST'])
-def add_symptom():
-    symptom = request.form['symptom']
 
-    # Add the symptom to the chosen symptoms list and redirect to the choose page
+@app.route('/add_symptom/<symptom>')
+def add_symptom(symptom):
+    ic(symptom)
     chosen_symptoms.append(symptom)
-    return redirect(url_for('choose',chosen_list=chosen_symptoms))
+    return redirect(url_for('choose'))
+
+@app.route('/call_diseases') 
+def call_diseases():
+    """Called Only from the choose.html page , to call the diseases function."""
+    global chosen_symptoms
+    return_value = redirect(url_for('diseases',sy=chosen_symptoms))
+    
+    chosen_symptoms = []
+    ic(chosen_symptoms)
+    
+    return return_value
 
 # Define a route for the contact page
 @app.route('/contact')

@@ -3,6 +3,7 @@
 
 {% block content %}
     <p class="text-primary"style="font-size: xx-large;font-weight:bold;">Disease Predictor - Result</p>
+    <p class="text-secondary">Symptoms : {{ sys }}</p>
     <h2 class="text-secondary">Possible diseases:</h2>
     <ul class="list-group">
         {% for key in keys %}

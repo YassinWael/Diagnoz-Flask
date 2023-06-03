@@ -61,14 +61,13 @@ transition: transform 0.2s ease-in-out;
   .btn-choose-symptom {
     padding: 10px;
     margin-bottom: 10px;
+    position: relative ;left:0;
 
   }
 
   .btn-choose-symptom:active {
 
-    background-color: royalblue ;
-
-
+    background-color: red ;
 
   }
 
