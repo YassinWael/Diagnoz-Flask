@@ -115,10 +115,11 @@ def symptoms():
     if request.method == "POST":
         # Get the symptoms entered by the user and redirect to the diseases page
         symptoms = request.form["sy"]
-        if len(symptoms)>1: # Used Inputted Empty List
+        if len(symptoms)<1: # Used Inputted Empty List
             flash("Cannot Be Empty!")
             return render_template('symptoms.html')
         else:
+            print(len(symptoms),symptoms)
             return redirect(url_for("diseases",sy=symptoms))
     else:
         # Display the symptoms page
