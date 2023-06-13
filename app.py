@@ -1,6 +1,6 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for,flash
-from ini_database import Diseases_dict,Diseases_info,new_sy_list
+from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms
 
 
 # Create a new Flask app instance
