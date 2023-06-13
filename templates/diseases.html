@@ -3,18 +3,24 @@
 
 {% block content %}
     <p class="text-primary"style="font-size: xx-large;font-weight:bold;">Disease Predictor - Result</p>
-    <p class="text-secondary">Symptoms : {{ sys }}</p>
+    <p class="text-secondary">Symptoms : </p>
+    {% for symptom in sys %}
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" >{{ symptom }}</li>
+        </ul>
+
+    {% endfor %}
     <h2 class="text-secondary">Possible diseases:</h2>
     <ul class="list-group">
         {% for key in keys %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="btn btn-primary btn-lg btn-rounded btn-diseases" href="{{ url_for('learn_more',disease=key[0]) }}"  role="button" >Learn more</a>
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="margin-bottom: 10px; background-color:peachpuff" >
+                <a class="btn btn-primary btn-lg btn-rounded btn-diseases" href="{{ url_for('learn_more',disease=key[0]) }}" role="button" >Learn more</a>
                 {{ key[0] }}
-                <span class="badge bg-info">{{ key[1] }}</span>
+                <span  class="text-info">{{ key[1] }}</span>
             </li>
         {% endfor %}
     </ul>
     <a class="btn btn-primary btn-lg" href="{{url_for('symptoms')}}" role="button" >Try Again.</a>
 
 
-{% endblock %}
+{% endblock %}ء

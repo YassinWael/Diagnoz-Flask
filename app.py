@@ -46,7 +46,7 @@ def get_diseases(symptoms_list):
 
 # Function to calculate the percentage of symptoms matched for a given disease
 def get_percent(disease,dict):
-    return f'has {dict[disease]} symptoms out of {len(Diseases_dict[disease])} '
+    return f'Has {dict[disease]} symptoms out of {len(Diseases_dict[disease])} '
 
 # Define a route for the home page
 @app.route('/')
@@ -89,6 +89,9 @@ def diseases(sy):
     # Get possible diagnoses based on the entered symptoms
     global diseases_final 
     diseases_final = get_diseases(symptoms_list=symptoms) 
+
+    #remove squared brackets 
+    symptoms = [i.strip("['").strip("']") for i in symptoms]
 
     # Render the diseases page with the list of possible diagnoses
    
