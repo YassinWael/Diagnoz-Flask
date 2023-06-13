@@ -1,67 +1,13 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for,flash
+from ini_database import Diseases_dict,Diseases_info,new_sy_list
 
-import csv
 
 # Create a new Flask app instance
 app = Flask(__name__)
 app.secret_key = 'iugegiujegehgdtijoie'
 
-# Define a dictionary that maps diseases to associated symptoms
-Diseases_dict = {}
 
-# Define a list to store symptoms when user wants list of symptoms only
-symptoms_list = []
-
-# Define a dictionary to store information on each disease
-Diseases_info = {}
-
-# Define paths to datasets
-datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/Flask-Disease/datasets'
-host_path = r"/home/Diagnoz/mysite/datasets"
-
-# Define an empty list to store chosen symptoms
-chosen_symptoms = []
-try:
-    with open(rf'{datasets_path}/dataset.csv', mode='r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-        
-            Diseases_dict[line[0]] = line[1:]
-            symptoms_list.append(line[1:])  
-    
-
-    with open(rf'{datasets_path}/symptom_Description.csv') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-                
-                Diseases_info[line[0].replace(' ',"")] = line[1]
-except FileNotFoundError:
-    with open(rf'{host_path}/dataset.csv', mode='r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-        
-            Diseases_dict[line[0]] = line[1:]
-            symptoms_list.append(line[1:])  
-    
-
-    with open(rf'{host_path}/symptom_Description.csv') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-                
-                Diseases_info[line[0].replace(' ',"")] = line[1]
-
-# Join all symptoms in symptoms_list into a single string
-sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
-
-# Split the string into a list of individual symptoms
-sy_list = sy_list.split(" ")
-
-# Remove any symptoms that contain the word "Symptom"
-sy_list = [i for i in sy_list if 'Symptom' not in i.split('_')]
-
-# Create a new set to store unique symptoms
-new_sy_list = set(sy_list) 
 
 # Function to format the symptoms entered by the user
 def format_symptoms(sy):
@@ -106,7 +52,6 @@ def get_percent(disease,dict):
 @app.route('/')
 @app.route('/home')
 def home():
-    
     return render_template('home.html')
 
 # Define a route for the symptoms page
@@ -190,7 +135,6 @@ def call_diseases():
     return_value = redirect(url_for('diseases',sy=chosen_symptoms))
     
     chosen_symptoms = []
-    
     
     return return_value
 
