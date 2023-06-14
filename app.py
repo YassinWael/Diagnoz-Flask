@@ -46,7 +46,7 @@ def get_diseases(symptoms_list):
 
 # Function to calculate the percentage of symptoms matched for a given disease
 def get_percent(disease,dict):
-    return f'Has {dict[disease]} symptoms out of {len(Diseases_dict[disease])} '
+    return f'Has {dict[disease]} {"symptom" if int(dict[disease])==1 else "symptoms" } out of {len(Diseases_dict[disease])} '
 
 # Define a route for the home page
 @app.route('/')
