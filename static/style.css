@@ -102,6 +102,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     text-transform: uppercase;
-    font-size: 120px;
+    font-size: 20vw;
     margin: 10px 0;
   }
