@@ -21,7 +21,7 @@
       font-style: italic;
       
 
-
+  
 
   }
   .btn-rounded {
@@ -52,23 +52,7 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
-  .about{
-    background: center url('https://i.postimg.cc/B6Wk8GvJ/image-removebg-preview.png') no-repeat;   
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background-size: contain;
 
-
-  }
-  .about:hover {
-    background: center url('https://i.postimg.cc/mD2MyPkj/information-unscreen.gif') no-repeat;  
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background-size: contain;
-    transform: scale(0.9);
-  }
 
   .btn-choose-symptom {
     padding: 10px;
@@ -83,7 +67,44 @@
 
   }
 
+  .btn-letter {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    width: 50px;
   
+    background-color: gray;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .btn-letter:hover{
+    color: red ;
+    transform: scale(1.5);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    
+
+
+  }
+  .btn-letter .gray-rectangle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+  
+  }
+  
+    
+
+
+  
+  .btn-letter .gray-rectangle  p{
+    
+    
+    color:black
+  
+  }
   h1 {
     font-family: "Cairo";
     text-align: center;

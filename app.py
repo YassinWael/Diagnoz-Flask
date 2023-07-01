@@ -1,7 +1,7 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for,flash
 from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms
-
+from icecream import ic
 
 # Create a new Flask app instance
 app = Flask(__name__)
@@ -80,7 +80,7 @@ def diseases(sy):
         if len(i)<4:
             flash("List Can't Be Empty :)")
             print(i)
-            return redirect(url_for('choose'))
+            return redirect(url_for('choose',letter="all"))
         else:
             print(len(i))
             print("Else")
@@ -117,19 +117,29 @@ def about():
     return render_template('about.html',title = 'About')
 
 # Define a route for the choose page
-@app.route('/choose',methods=['GET','POST'])
-def choose():
-    # Sort the list of unique symptoms and render the choose page
+@app.route('/choose/<letter>',methods=['GET','POST'])
+def choose(letter=""):
     sy_list = sorted(new_sy_list)
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'Y']
+    if letter == 'all':
+        return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list,letters=letters)
+    else:
+        ic(sy_list)
+        sy_list = [i for i in sy_list if i[0]==letter.lower()]
+        ic(sy_list,letter)
+        return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sorted(sy_list),letters=letters)
+
+    # Sort the list of unique symptoms and render the choose page
     
-    return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list)
+    
+    return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list,letters=letters)
 
 
 @app.route('/add_symptom/<symptom>')
 def add_symptom(symptom):
     
     chosen_symptoms.append(symptom)
-    return redirect(url_for('choose'))
+    return redirect(url_for('choose',letter="all"))
 
 @app.route('/call_diseases') 
 def call_diseases():

@@ -1,16 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-   
+<ul>
+    <!-- Letter Buttons -->
+    {% for letter in letters %}
+    <a role="button" class="btn-letter " href="{{url_for('choose',letter=letter)}}">
+        <div class="gray-rectangle mb-5 ">
+            <p>{{ letter }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</ul>
+   <!-- Symptomps List -->
     <ul class="list-group">
-        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom" href="{{ url_for('call_diseases')}}">Done</a>
+        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom" style="margin-top: 100px; margin-bottom:50px;" href="{{ url_for('call_diseases')}}">Done</a>
         {% for symptom in sys_list %}
             <a role="button" class="btn btn-primary btn-choose-symptom btn-rounded btn-diseases" type="button" href= "{{ url_for('add_symptom',symptom = symptom)}}" >{{ symptom }}</a>
         {% endfor %}
 
-
-
-
     </ul>
-
+    
 {% endblock %}

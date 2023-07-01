@@ -28,7 +28,8 @@ try:
         for line in csv_reader:
                 
                 Diseases_info[line[0].replace(' ',"")] = line[1]
-except FileNotFoundError:
+except FileNotFoundError: 
+    # code is running from host
     with open(rf'{host_path}/dataset.csv', mode='r') as csv_file:
         csv_reader = csv.reader(csv_file)
         for line in csv_reader:
