@@ -124,9 +124,9 @@ def choose(letter=""):
     if letter == 'all':
         return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list,letters=letters)
     else:
-        ic(sy_list)
+      
         sy_list = [i for i in sy_list if i[0]==letter.lower()]
-        ic(sy_list,letter)
+       
         return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sorted(sy_list),letters=letters)
 
     # Sort the list of unique symptoms and render the choose page
