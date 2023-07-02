@@ -57,10 +57,20 @@
   .btn-choose-symptom {
     padding: 10px;
     margin-bottom: 10px;
-    position: relative ;left:0;
+    position: relative ;
+    left:0;
+    min-width: 100%;
 
   }
-
+  .btn-choose-done {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: 17vw;
+    left: 0;
+    
+  }
   .btn-choose-symptom:active {
 
     background-color: red ;
