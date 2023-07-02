@@ -96,7 +96,13 @@
   }
   
     
-
+  @media only screen and (max-width: 600px) {
+    .btn-choose-symptom {
+      width: 50vw;
+      font-size: 1rem;
+    }
+  }
+  
 
   
   .btn-letter .gray-rectangle  p{
