@@ -20,7 +20,7 @@
    <!-- Symptomps List -->
    <nav>
     <ul class="list-group">
-        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom btn-outline-secondary" style="margin-top: 50px; margin-bottom:50px; width:13vw;" href="{{ url_for('call_diseases')}}">Done</a>
+        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom btn-outline-secondary" style="margin-top: 50px; margin-bottom:50px; width:17vw;" href="{{ url_for('call_diseases')}}">Done</a>
         
         {% for symptom in sys_list %}
             <a role="button" class="btn btn-primary btn-choose-symptom btn-rounded btn-diseases" type="button" href= "{{ url_for('add_symptom',symptom = symptom)}}" >{{ symptom }}</a>
