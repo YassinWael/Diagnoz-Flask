@@ -1,23 +1,31 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<ul>
-    <!-- Letter Buttons -->
-    {% for letter in letters %}
-    <a role="button" class="btn-letter " href="{{url_for('choose',letter=letter)}}">
-        <div class="gray-rectangle mb-5 ">
-            <p>{{ letter }}</p>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="btn-group-horizontal" style="margin-top: 5%;">
+          <!-- all letters button -->
+          <a class="btn btn-outline-primary mb-2" href="{{url_for('choose',letter='all')}}">All</a>    
+          {% for letter in letters %}
+          <a class="btn btn-outline-primary mb-2 " href="{{url_for('choose',letter=letter)}}">{{ letter }}</a>
+          {% endfor %}        
         </div>
-    </a>
-    {% endfor %}
-</ul>
+      </div>
+    </div>
+{% if sys_list|length < 27 %}
+    <p class="display-4 lead">Showing Diseases For Letter : <span style="font-family: 'Dancing Script',serif; font-weight:bold;">{{ letter_chosen }}</span></p>
+{% endif %}
+<hr class="my-4">
    <!-- Symptomps List -->
+   <nav>
     <ul class="list-group">
-        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom" style="margin-top: 100px; margin-bottom:50px;" href="{{ url_for('call_diseases')}}">Done</a>
+        <a role="Button"  class="btn btn-secondary btn-rounded btn-choose-symptom btn-outline-secondary" style="margin-top: 50px; margin-bottom:50px; width:5vw;" href="{{ url_for('call_diseases')}}">Done</a>
+        
         {% for symptom in sys_list %}
             <a role="button" class="btn btn-primary btn-choose-symptom btn-rounded btn-diseases" type="button" href= "{{ url_for('add_symptom',symptom = symptom)}}" >{{ symptom }}</a>
         {% endfor %}
 
     </ul>
-    
+    </nav>
 {% endblock %}

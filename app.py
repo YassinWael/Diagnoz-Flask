@@ -127,12 +127,10 @@ def choose(letter=""):
       
         sy_list = [i for i in sy_list if i[0]==letter.lower()]
        
-        return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sorted(sy_list),letters=letters)
+        return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sorted(sy_list),letters=letters,letter_chosen=letter)
 
     # Sort the list of unique symptoms and render the choose page
     
-    
-    return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list,letters=letters)
 
 
 @app.route('/add_symptom/<symptom>')
