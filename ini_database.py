@@ -55,3 +55,4 @@ sy_list = [i for i in sy_list if 'Symptom' not in i.split('_')]
 
 # Create a new set to store unique symptoms
 new_sy_list = set(sy_list) 
+

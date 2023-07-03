@@ -119,12 +119,14 @@ def about():
 # Define a route for the choose page
 @app.route('/choose/<letter>',methods=['GET','POST'])
 def choose(letter=""):
+    from icecream import ic
     sy_list = sorted(new_sy_list)
     letters = ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'Y']
     if letter == 'all':
         return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sy_list,letters=letters)
     else:
-      
+        ic(sy_list)
+        sy_list = [i for i in sy_list if not i.startswith(' ')]
         sy_list = [i for i in sy_list if i[0]==letter.lower()]
        
         return render_template('choose.html',chosen_list = chosen_symptoms,sys_list=sorted(sy_list),letters=letters,letter_chosen=letter)
