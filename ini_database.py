@@ -21,6 +21,7 @@ try:
         
             Diseases_dict[line[0]] = line[1:]
             symptoms_list.append(line[1:])  
+
     
 
     with open(rf'{datasets_path}/symptom_Description.csv') as csv_file:
@@ -28,6 +29,9 @@ try:
         for line in csv_reader:
                 
                 Diseases_info[line[0].replace(' ',"")] = line[1]
+
+
+
 except FileNotFoundError: 
     # code is running from host
     with open(rf'{host_path}/dataset.csv', mode='r') as csv_file:
@@ -44,6 +48,7 @@ except FileNotFoundError:
                 
                 Diseases_info[line[0].replace(' ',"")] = line[1]
 
+
 # Join all symptoms in symptoms_list into a single string
 sy_list = " ".join([" ".join(symptoms) for symptoms in symptoms_list])
 
@@ -56,3 +61,4 @@ sy_list = [i for i in sy_list if 'Symptom' not in i.split('_')]
 # Create a new set to store unique symptoms
 new_sy_list = set(sy_list) 
 
+print(Diseases_info.values())
