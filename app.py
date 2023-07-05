@@ -156,6 +156,11 @@ def call_diseases():
 def contact():
     return render_template('contact.html')
 
+# Google verification
+@app.route('/google4b37fc6324b59d80')
+def verification():
+    return render_template('google4b37fc6324b59d80.html')
+
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
