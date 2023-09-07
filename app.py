@@ -7,10 +7,11 @@ from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms
 # Create a new Flask app instance
 app = Flask(__name__)
 app.secret_key = 'iugegiujegehgdtijoie'
-babel = Babel(app)
+
 def get_locale():
     return session.get('language', 'en')
-babel.init_app(app, locale_selector=get_locale)
+
+babel = Babel(app,locale_selector=get_locale)
 
 
 # Define a route for setting the language
