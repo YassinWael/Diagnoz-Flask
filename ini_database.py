@@ -1,5 +1,5 @@
 import csv
-
+lang = "English" #Default language.
 Diseases_dict = {}
 
 # Define a list to store symptoms when user wants list of symptoms only

@@ -5,15 +5,7 @@
 
 <html>
   <head>
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYT76Q34BN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RYT76Q34BN');
-  </script>
+  
     <title>Diagnoz</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/cLb8TySj/Logo-prev-ui.png" />
     <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/cLb8TySj/Logo-prev-ui.png" />
@@ -29,7 +21,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-
+    <select name="language" onchange="location = this.value;">
+      <option value="{{ url_for('set_language', language='en') }}" {% if session['language'] == 'en' %}selected{% endif %}>English</option>
+      <option value="{{ url_for('set_language', language='ar') }}" {% if session['language'] == 'ar' %}selected{% endif %}>Arabic</option>
+    </select>
+    
 
     {% block flash_msg %}
         <div class="container">
@@ -43,6 +39,7 @@
             {% block page_content %}{% endblock %}
         </div>
     {% endblock %}
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="{{url_for('home')}}"> <img src="https://i.postimg.cc/sXFx1tzz/Diagnoz-Logo-removebg-preview.png" width="260" ></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

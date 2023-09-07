@@ -1,0 +1,35 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-07-11 15:52+0300\n"
+"PO-Revision-Date: 2023-07-11 15:52+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/home.html:6
+msgid "Welcome to Diagnoz"
+msgstr "مرحبا بكم في موقعنا"
+
+
+#: templates/home.html:7
+msgid ""
+"Enter your symptoms and get an accurate assessment of your health with "
+"Diagnoz! Our database uses scientific literature and statistical data "
+"from thousands of patient cases to provide you with the most likely "
+"diagnoses and their percentage chance. It's fast, free, and anonymous. "
+"Start your checkup now and take control of your health!"
+msgstr ""
+"أدخل أعراضك واحصل على تقييم دقيق لصحتك مع Diagnoz! تستخدم قاعدة بياناتنا الأدبيات العلمية والبيانات الإحصائية من آلاف حالات المرضى لتزويدك بالتشخيصات الأكثر احتمالًا ونسبة فرصتها. إنه سريع ومجاني ومجهول. ابدأ فحصك الآن وتحكم في صحتك!"

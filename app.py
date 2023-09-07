@@ -1,12 +1,24 @@
 # Import the Flask class from the flask module
-from flask import Flask, render_template, request, redirect, url_for,flash
-from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms
+from flask import Flask, render_template, request, redirect, url_for,flash,session
+from flask_babel import Babel
+from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms,lang
 
 
 # Create a new Flask app instance
 app = Flask(__name__)
 app.secret_key = 'iugegiujegehgdtijoie'
+babel = Babel(app)
+def get_locale():
+    return session.get('language', 'en')
+babel.init_app(app, locale_selector=get_locale)
 
+
+# Define a route for setting the language
+@app.route('/set_language/<language>')
+def set_language(language=None):
+    # Set the session variable to the selected language and redirect to the previous page
+    session['language'] = language
+    return redirect(request.referrer)
 
 
 # Function to format the symptoms entered by the user
@@ -157,9 +169,10 @@ def contact():
     return render_template('contact.html')
 
 # Google verification
-@app.route('/google4b37fc6324b59d80')
-def verification():
-    return render_template('google4b37fc6324b59d80.html')
+@app.route('/googlecb2bae94ee95880b.html')
+def google_verification():
+    return app.send_static_file('googlecb2bae94ee95880b.html')
+
 
 # Run the Flask app
 if __name__ == '__main__':
