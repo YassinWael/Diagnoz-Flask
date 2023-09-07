@@ -14,10 +14,14 @@ babel.init_app(app, locale_selector=get_locale)
 
 
 # Define a route for setting the language
-@app.route('/set_language/<language>')
-def set_language(language=None):
+@app.route('/set_language')
+def set_language():
     # Set the session variable to the selected language and redirect to the previous page
-    session['language'] = language
+    if session['language'] == 'en':
+        
+        session['language'] = 'ar'
+    else:
+        session['language'] = 'en'
     return redirect(request.referrer)
 
 

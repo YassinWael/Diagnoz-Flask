@@ -152,3 +152,5 @@ cython_debug/
 #.idea/
 cleaned_data.csv
 Untitled Project.jpg
+translations/ar/LC_MESSAGES/messages.po
+.gitignore
