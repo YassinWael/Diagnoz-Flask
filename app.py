@@ -16,6 +16,8 @@ babel.init_app(app, locale_selector=get_locale)
 # Define a route for setting the language
 @app.route('/set_language')
 def set_language():
+    if 'language' not in session:
+        session['language'] = 'en'
     # sets the opposite of the old language then return to the page
     if session['language'] == 'en':
 
@@ -180,4 +182,4 @@ def google_verification():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
