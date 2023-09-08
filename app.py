@@ -176,6 +176,10 @@ def call_diseases():
 def contact():
     return render_template('contact.html')
 
+@app.route('/download')
+def download():
+    return render_template('download.html')
+
 # Google verification
 @app.route('/googlecb2bae94ee95880b.html')
 def google_verification():
@@ -189,6 +193,7 @@ def service_worker():
 @app.route('/app.js')
 def app_worker():
     return app.send_static_file('app.js')
+
 
 
 # Run the Flask app
