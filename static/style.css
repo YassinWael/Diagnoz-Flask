@@ -105,17 +105,7 @@
   
   }
   
-    
-  @media only screen and (max-width: 600px) {
-    .btn-choose-symptom {
-      width: 50vw;
-      font-size: 1rem;
-    }
-    #language{
-      width: 7vw;
-      height: 7vw;
-    }
-  }
+
   #download-container {
     display: flex;
     flex-direction: column;
@@ -128,26 +118,17 @@
   
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    right: 2%;
-    transform: translateY(-50%);
   }
   
   #installButton {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
-    height: 100px;
-    top: 70%;
-    left: 14%;
-    
+    width: 350px;
+    margin-left: 100px;
+    height: 100px;    
   }
   
   #installButton img {
@@ -156,9 +137,29 @@
     height: auto;
     margin-right: 10px;
   }
+
   @media only screen and (max-width: 600px) {
     #installButton {
-      top: 80%;
+      width: 250px;
+  
+    
+    }
+    #downloadText {
+      font-size: 4vw;
+    }
+  
+  
+  }
+    
+  @media only screen and (max-width: 600px) {
+    .btn-choose-symptom {
+      width: 50vw;
+      font-size: 1rem;
+
+    }
+    #language{
+      width: 7vw;
+      height: 7vw;
     }
   }
   
