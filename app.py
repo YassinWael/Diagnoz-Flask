@@ -7,6 +7,7 @@ from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms
 # Create a new Flask app instance
 app = Flask(__name__)
 app.secret_key = 'iugegiujegehgdtijoie'
+
 babel = Babel(app)
 def get_locale():
     return session.get('language', 'en')
@@ -69,6 +70,7 @@ def get_percent(disease,dict):
 # Define a route for the home page
 @app.route('/')
 @app.route('/home')
+@app.route('/None')
 def home():
     return render_template('home.html')
 

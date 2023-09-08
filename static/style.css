@@ -111,22 +111,24 @@
       width: 50vw;
       font-size: 1rem;
     }
+    #language{
+      width: 7vw;
+      height: 7vw;
+    }
   }
   
   .language{
     width: 5vw;
     height: 5vw;
+    display: inline-block;
     
     
 
   }
   #language{
-    display: flex;
-    top: 25%;
-    right: 100px;
     position: absolute;
-    justify-content: center;
-    align-items: center;
+    top: 10px;
+    right: 10px;
   }
   .btn-letter .gray-rectangle  p{
     position: absolute;
