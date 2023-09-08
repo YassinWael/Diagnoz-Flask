@@ -181,6 +181,15 @@ def contact():
 def google_verification():
     return app.send_static_file('googlecb2bae94ee95880b.html')
 
+@app.route('/service-worker.js')
+def service_worker():
+    return app.send_static_file('service-worker.js')
+
+
+@app.route('/app.js')
+def app_worker():
+    return app.send_static_file('app.js')
+
 
 # Run the Flask app
 if __name__ == '__main__':
