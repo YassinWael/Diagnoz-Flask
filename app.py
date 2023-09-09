@@ -1,7 +1,7 @@
 # Import the Flask class from the flask module
 from flask import Flask, render_template, request, redirect, url_for,flash,session
 from flask_babel import Babel
-from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms,lang
+from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms,code_running
 
 
 # Create a new Flask app instance
@@ -198,4 +198,5 @@ def app_worker():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    if code_running!= "Host":
+        app.run(host='0.0.0.0',debug=True)

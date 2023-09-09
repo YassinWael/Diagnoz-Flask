@@ -12,6 +12,11 @@ Diseases_info = {}
 datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/Flask-Disease/datasets'
 host_path = r"/home/Diagnoz/mysite/datasets"
 
+# Variable for location where code is running 
+
+code_running = "Local" # Local code running
+
+
 # Define an empty list to store chosen symptoms
 chosen_symptoms = []
 try:
@@ -34,6 +39,8 @@ try:
 
 except FileNotFoundError: 
     # code is running from host
+
+    code_running = "Host"
     with open(rf'{host_path}/dataset.csv', mode='r') as csv_file:
         csv_reader = csv.reader(csv_file)
         for line in csv_reader:

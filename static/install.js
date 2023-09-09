@@ -1,27 +1,29 @@
 // install.js
 
-let deferredPrompt;
+(function() {
+  let deferredPrompt;
 
-console.log("install running");
+  console.log("Install script running");
 
-window.onload = Logic;
+  window.addEventListener('load', initialize);
 
-function showPrompt() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
+  function initialize() {
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    const installButton = document.getElementById('installButton');
+    installButton.style.display = 'none';
+    installButton.addEventListener('click', showPrompt);
   }
-}
 
-// Download Button
-function Logic() {
-  window.addEventListener('beforeinstallprompt', function(e) {
-    e.preventDefault();
-    deferredPrompt = e;
+  function handleBeforeInstallPrompt(event) {
+    event.preventDefault();
+    deferredPrompt = event;
     const installButton = document.getElementById('installButton');
     installButton.style.display = 'block';
-  });
+  }
 
-  const installButton = document.getElementById('installButton');
-  installButton.style.display = 'none';
-  installButton.onclick = showPrompt;
-}
+  function showPrompt() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+    }
+  }
+})();
