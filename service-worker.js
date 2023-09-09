@@ -1,6 +1,10 @@
-const CACHE_NAME = 'my-site-cache-v1';
-const urlsToCache = [
-"/template/about.html",
+// Install the service worker
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('offline').then(function(cache) {
+      return cache.addAll([
+        '/',
+        "/template/about.html",
 "/template/choose.html",
 "/template/contact.html",
 "/template/diseases.html",
@@ -18,31 +22,16 @@ const urlsToCache = [
 "/static/images/download-app.png",
 "/static/images/manifest-icon-192.maskable.png",
 "/static/images/manifest-icon-512.maskable.png"
-];
-
-self.addEventListener('install', function(event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');
-        
-        return cache.addAll(urlsToCache);
-        console.log(" Done caching");
-      })
+      ]);
+    })
   );
 });
 
+// Fetch the content using the service worker
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
   );
 });

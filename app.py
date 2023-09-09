@@ -1,5 +1,5 @@
 # Import the Flask class from the flask module
-from flask import Flask, render_template, request, redirect, url_for,flash,session
+from flask import Flask, render_template, request, redirect, url_for,flash,session,send_file
 from flask_babel import Babel
 from ini_database import Diseases_dict,Diseases_info,new_sy_list,chosen_symptoms,code_running
 
@@ -187,7 +187,7 @@ def google_verification():
 
 @app.route('/service-worker.js')
 def service_worker():
-    return app.send_static_file('service-worker.js')
+    return send_file('service-worker.js')
 
 
 @app.route('/app.js')
@@ -198,5 +198,7 @@ def app_worker():
 
 # Run the Flask app
 if __name__ == '__main__':
-    if code_running!= "Host":
-        app.run(host='0.0.0.0',debug=True)
+    
+
+
+        app.run(host='0.0.0.0',debug=True,port=8000)
