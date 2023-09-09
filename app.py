@@ -185,7 +185,7 @@ def download():
 def google_verification():
     return app.send_static_file('googlecb2bae94ee95880b.html')
 
-@app.route('/service-worker.js')
+@app.route('/sw.js')
 def service_worker():
     return send_file('sw.js')
 
