@@ -12,7 +12,10 @@
   "dir": "ltr",
   "lang": "en",
   "iarc_rating_id": "5",
-  "display_override": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "window-controls-overlay"
+  ],
   "prefer_related_applications": false,
   "protocol_handlers": [
     {
