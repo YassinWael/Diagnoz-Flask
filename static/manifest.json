@@ -41,7 +41,7 @@
       "description":"opens the about page",
       "icons": [
         {
-          "src": "/static/images/manifest-icon-192.maskable.png",
+          "src": "images/manifest-icon-192.maskable.png",
           "type": "image/png",
           "sizes": "192x192"
         }
@@ -52,22 +52,22 @@
 
   "icons": [
     {
-      "src": "/static/images/512Logo.png",
+      "src": "images/512Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/static/images/manifest-icon-192.maskable.png",
+      "src": "images/manifest-icon-192.maskable.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/static/images/manifest-icon-512.maskable.png",
+      "src": "images/manifest-icon-512.maskable.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/static/images/manifest-icon-512.maskable.png",
+      "src": "images/manifest-icon-512.maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
@@ -75,12 +75,12 @@
   ],
   "screenshots": [
     {
-      "src": "Flask-Disease/static/images/screenshots/1280x800-screenshot.png",
+      "src": "images/screenshots/1280x800-screenshot.png",
       "sizes": "1280x800",
       "type": "image/png"
     },
     {
-      "src": "Flask-Disease/static/images/screenshots/750x1334-screenshot.png",
+      "src": "images/screenshots/750x1334-screenshot.png",
       "sizes": "750x1334",
       "type": "image/png"
     }

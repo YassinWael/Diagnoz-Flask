@@ -187,7 +187,7 @@ def google_verification():
 
 @app.route('/service-worker.js')
 def service_worker():
-    return send_file('service-worker.js')
+    return send_file('sw.js')
 
 
 @app.route('/app.js')
