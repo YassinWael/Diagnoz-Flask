@@ -1,3 +1,5 @@
+// install.js
+
 let deferredPrompt;
 
 console.log("install running");
