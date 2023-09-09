@@ -4,13 +4,30 @@
     "description": "Yassin Progressive Web Application",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "indigo",
+    "background_color": "#194D33",
     "theme_color": "#000000",
+    "display_override": [
+      "window-controls-overlay",
+      "standalone",
+      "browser",
+      "fullscreen"
+    ],
     "icons": [
       {
         "src": "/static/Logo.png",
         "sizes": "192x192",
         "type": "image/png"
+
+
+      },
+      
+      {
+        "src" : "/static/512Logo.png",
+        "sizes":"512x512",
+        "type":"image/png"
+        
+
+
       }
     ]
   }
