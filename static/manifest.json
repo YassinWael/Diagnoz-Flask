@@ -11,6 +11,7 @@
   "id": "yasso12",
   "dir": "ltr",
   "lang": "en",
+  "edge_side_panel.preferred_width":"12px",
   "iarc_rating_id": "5",
   "display_override": [
     "fullscreen",
