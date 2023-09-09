@@ -4,9 +4,43 @@
   "short_name": "Diagnoz",
   "description": "Yassin Progressive Web Application",
   "start_url": "/",
+  
   "display": "standalone",
   "background_color": "#194D33",
   "theme_color": "#000000",
+  "id": "yasso12",
+  "dir": "ltr",
+  "lang": "en",
+  "iarc_rating_id": "5",
+  "display_override": "fullscreen",
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+jngl",
+      "url": "/lookup?type=%s"
+    },
+    {
+      "protocol": "web+jnglstore",
+      "url": "/shop?for=%s"
+    }
+  ],
+  
+  
+  "shortcuts": [
+    {
+      "name":"about",
+      "url":"/about",
+      "description":"opens the about page",
+      "icons": [
+        {
+          "src": "/static/images/manifest-icon-192.maskable.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  
 
   "icons": [
     {
