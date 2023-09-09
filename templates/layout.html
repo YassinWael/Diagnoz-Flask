@@ -3,7 +3,7 @@
 
 
 
-<html>
+<html lang="en">
   <head>
   
     <title>Diagnoz</title>
@@ -48,7 +48,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{{url_for('home')}}"> <img src="https://i.postimg.cc/sXFx1tzz/Diagnoz-Logo-removebg-preview.png" width="260" ></a>
+      <a class="navbar-brand" href="{{url_for('home')}}">  <img title="Logo" alt="Logo-img" src="https://i.postimg.cc/sXFx1tzz/Diagnoz-Logo-removebg-preview.png" width="260" ></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -65,7 +65,7 @@
             <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
           </li>
           <li class = "nav-item">
-            <a class="nav-link" href={{url_for('download')}}>Download</a>
+            <a class="nav-link" id="download" href="{{url_for('download')}}" style="display: None;">Download</a>
 
           </li>
         </ul>
@@ -73,7 +73,7 @@
     </nav>
 
     <a id="language" href="{{url_for('set_language')}}">
-      <img class='language'  src="https://cdn-icons-png.flaticon.com/512/484/484582.png">
+      <img class='language' title="translate" alt="translate-img" src="https://cdn-icons-png.flaticon.com/512/484/484582.png">
     </a>
   </div>
     <div class="container">
