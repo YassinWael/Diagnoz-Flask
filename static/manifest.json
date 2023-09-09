@@ -12,6 +12,10 @@
   "dir": "ltr",
   "lang": "en",
   "edge_side_panel.preferred_width":"12px",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+},
+"categories": ["games", "finance", "navigation"],
   "iarc_rating_id": "5",
   "display_override": [
     "fullscreen",
