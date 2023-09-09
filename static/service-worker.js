@@ -3,12 +3,7 @@ console.log('Starting service worker');
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('my-cache').then(cache => {
-      return cache.addAll([
-        '/*',
-        '/templates/*',
-        'static/*',
-        '/datasets/*'
-      ]);
+      return cache.add('/templates/*')
     })
   );
 });
