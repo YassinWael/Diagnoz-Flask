@@ -1,4 +1,6 @@
 // Function to handle the installation of the service worker
+
+console.log('Starting service worker')
 function handleInstall(event) {
     event.waitUntil(
       openCache().then(function(cache) {
