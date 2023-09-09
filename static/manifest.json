@@ -1,34 +1,51 @@
 {
-    "name": "Diagnoz",
-    "short_name": "Diagnoz",
-    "description": "Yassin Progressive Web Application",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#194D33",
-    "theme_color": "#000000",
-    "display_override": [
-      "window-controls-overlay",
-      "standalone",
-      "browser",
-      "fullscreen"
-    ],
-    "icons": [
-      {
-        "src": "/static/Logo.png",
-        "sizes": "192x192",
-        "type": "image/png"
+"orientation": "any", 
+  "name": "Diagnoz",
+  "short_name": "Diagnoz",
+  "description": "Yassin Progressive Web Application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#194D33",
+  "theme_color": "#000000",
 
-
-      },
-      
-      {
-        "src" : "/static/512Logo.png",
-        "sizes":"512x512",
-        "type":"image/png"
-        
-
-
-      }
-    ]
-  }
-  
+  "icons": [
+    {
+      "src": "/static/images/512Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/apple-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/manifest-icon-192.maskable",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/manifest-icon-512.maskable",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/manifest-icon-512.maskable",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Flask-Disease/static/images/screenshots/1280x800-screenshot.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    },
+    {
+      "src": "Flask-Disease/static/images/screenshots/750x1334-screenshot.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ]
+}
