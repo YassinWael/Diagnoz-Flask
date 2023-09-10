@@ -6,6 +6,7 @@
   "start_url": "/",
   
   "display": "standalone",
+  
   "background_color": "#194D33",
   "theme_color": "#000000",
   "id": "yasso12",

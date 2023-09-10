@@ -74,6 +74,8 @@ def get_percent(disease,dict):
 def home():
     return render_template('home.html')
 
+
+
 # Define a route for the symptoms page
 @app.route('/symptoms', methods=['GET', 'POST'])
 def symptoms():
@@ -194,11 +196,19 @@ def service_worker():
 def app_worker():
     return app.send_static_file('app.js')
 
+@app.route('/offline.html')
+def offline_worker():
+    return send_file('offline.html')
 
+# For offline caching
+@app.route('/home.html')
+def home_cache():
+    return send_file('templates/home.html')
 
+@app.route('/layout.html')
+def layout_cache():
+    return send_file('templates/layout.html')
 # Run the Flask app
 if __name__ == '__main__':
-    
 
-
-        app.run(host='0.0.0.0',debug=True,port=8000)
+        app.run(host='0.0.0.0',debug=True,port=5000)
