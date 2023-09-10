@@ -208,6 +208,9 @@ def home_cache():
 @app.route('/layout.html')
 def layout_cache():
     return send_file('templates/layout.html')
+@app.route('/')
+def home_cache_default():
+    return send_file('templates/home.html')
 # Run the Flask app
 if __name__ == '__main__':
 
