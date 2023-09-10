@@ -211,6 +211,12 @@ def layout_cache():
 @app.route('/')
 def home_cache_default():
     return send_file('templates/home.html')
+
+# For verification purposes
+@app.route('/assetlinks.json')
+def assetlinks_json():
+    return send_file('assetlinks.json')
+
 # Run the Flask app
 if __name__ == '__main__':
 
