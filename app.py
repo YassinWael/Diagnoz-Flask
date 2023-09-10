@@ -217,9 +217,6 @@ def home_cache_default():
 def assetlinks_json():
     return send_file('assetlinks.json')
 
-@app.route('/assetlinks.json')
-def assetlinks_json():
-    return send_file('assetlinks.json')
 
 # Run the Flask app
 if __name__ == '__main__':
