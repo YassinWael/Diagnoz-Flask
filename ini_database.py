@@ -9,7 +9,7 @@ symptoms_list = []
 Diseases_info = {}
 
 # Define paths to datasets
-datasets_path = r'C:/Users/yassi/Downloads/Flask-tut-bing/mysite/datasets'
+datasets_path = r'C:/Users/yassi/Downloads/DIAGNOZ-FLASK/datasets'
 host_path = r"/home/Diagnoz/mysite/datasets"
 
 # Variable for location where code is running 

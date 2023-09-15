@@ -17,14 +17,20 @@ babel.init_app(app, locale_selector=get_locale)
 # Define a route for setting the language
 @app.route('/set_language')
 def set_language():
+    print("setting language...")
     if 'language' not in session:
         session['language'] = 'en'
+        print("language set to english")
     # sets the opposite of the old language then return to the page
     if session['language'] == 'en':
 
         session['language'] = 'ar'
+        print("language set to arabic")
+
     else:
         session['language'] = 'en'
+        print("language set to english")
+
     return redirect(request.referrer)
 
 
@@ -202,15 +208,20 @@ def offline_worker():
 
 # For offline caching
 @app.route('/home.html')
+@app.route('/')
 def home_cache():
     return send_file('templates/home.html')
 
 @app.route('/layout.html')
 def layout_cache():
     return send_file('templates/layout.html')
-@app.route('/')
-def home_cache_default():
-    return send_file('templates/home.html')
+
+
+@app.route('/style.css')
+def css_cache():
+    return app.send_static_file('style.css')
+
+
 
 # For verification purposes
 @app.route('/assetlinks.json')

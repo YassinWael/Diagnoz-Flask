@@ -6,7 +6,7 @@ if( 'undefined' === typeof window){
 const CACHE = "pwabuilder-page";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const cachedPages = "offline.html";
-const cachedPages = ["offline.html","home.html","layout.html","/"]
+const cachedPages = ["offline.html","home.html","layout.html","/","style.css"]
 
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {

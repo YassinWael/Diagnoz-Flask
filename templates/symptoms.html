@@ -6,7 +6,7 @@
     <form action="#" method="post">
       <div class="form-group">
         <label for="symptoms">Symptoms</label>
-        <input type="text" class="form-control" id="symptoms" name="sy" placeholder="Please Type Your Symptoms (seperated by comas) / choose symptoms">
+        <input type="text" class="form-control" id="symptoms" name="sy" placeholder="Type (eg: headache , fever ) || Hit Choose">
       </div>
       <button type="submit" class="btn btn-primary btn-rounded btn-diseases" >Submit</button>
       <a href="{{ url_for('choose',letter = 'all') }}" role="button" class="btn btn-secondary btn-rounded "> Choose Symptoms</a>
