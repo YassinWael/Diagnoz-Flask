@@ -228,6 +228,10 @@ def css_cache():
 def assetlinks_json():
     return send_file('assetlinks.json')
 
+#policy
+@app.route('/policy.html')
+def policy():
+    return send_file('templates/policy.html')
 
 # Run the Flask app
 if __name__ == '__main__':
