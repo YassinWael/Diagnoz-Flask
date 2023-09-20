@@ -1,0 +1,10 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.pythonanywhere.diagnoz.yassin",
+        "sha256_cert_fingerprints": ["BA:56:D3:5F:6A:A3:24:CE:D5:88:93:59:31:C2:7C:00:70:C8:5E:87:F3:59:6C:77:5E:AB:D4:F1:96:45:82:EB"]
+      }
+    }
+  ]

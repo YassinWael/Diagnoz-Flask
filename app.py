@@ -221,7 +221,9 @@ def layout_cache():
 def css_cache():
     return app.send_static_file('style.css')
 
-
+@app.route('/.well-known/assetlinks.json')
+def assetlinks():
+    return send_file('.well-known/assetlinks.json')
 
 # For verification purposes
 @app.route('/assetlinks.json')
