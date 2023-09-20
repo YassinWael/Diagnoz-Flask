@@ -1,10 +1,11 @@
 [
-    {
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.pythonanywhere.diagnoz.yassin",
-        "sha256_cert_fingerprints": ["BA:56:D3:5F:6A:A3:24:CE:D5:88:93:59:31:C2:7C:00:70:C8:5E:87:F3:59:6C:77:5E:AB:D4:F1:96:45:82:EB"]
-      }
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pythonanywhere.diagnoz.yassin",
+      "sha256_cert_fingerprints":
+        ["BA:56:D3:5F:6A:A3:24:CE:D5:88:93:59:31:C2:7C:00:70:C8:5E:87:F3:59:6C:77:5E:AB:D4:F1:96:45:82:EB", "14:81:23:8B:0E:E0:0F:B1:F1:C0:AA:3D:E3:BD:35:CF:5A:A9:70:AF:9B:98:28:AE:04:42:23:0B:F0:40:03:32"]
     }
-  ]
+  }
+]
