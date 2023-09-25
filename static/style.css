@@ -53,30 +53,46 @@
   }
 
 
-
-  .btn-choose-symptom {
-    padding: 10px;
-    margin-bottom: 10px;
-    position: relative ;
-    left:0;
-    min-width: 100%;
-
-  }
-  .btn-choose-done {
-    position: relative;
-    padding: 10px;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    width: 17vw;
-    left: 0;
+  .btn-choose{
+    display: flex;
+    margin-bottom: 20px;
+    width: max-content;
     
-  }
-  .btn-choose-symptom:active {
-
-    background-color: red ;
 
   }
+  .btn-choose:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px !important; 
+    transform: scale(1.05) rotate(+1deg) !important;
+  }
+  #btn-delete { 
+    position: absolute;
+    width: auto !important;
+    height: auto !important;
+    background-color: red !important;
+    color: black !important;
+    right: 20vw;
+    
+  
 
+  }
+
+  #btn-delete:hover {
+    box-shadow: rgba(187, 187, 44, 0.35) 0 -25px 18px -14px inset,rgba(187, 44, 68, 0.25) 0 1px 2px,rgba(0, 0, 0, 0.25) 0 2px 4px,rgba(44,187,99,.25);
+    transform: scale(1.05);
+
+
+
+  
+  }
+
+
+
+  #btn-done {
+    position: absolute;
+    right: 15vw;
+    background-color: green;
+    font-family: "Nambla";
+  }
   .btn-letter {
     display: inline-block;
     position: relative;
@@ -152,10 +168,13 @@
   }
     
   @media only screen and (max-width: 600px) {
-    .btn-choose-symptom {
+    .btn-choose {
       width: 50vw;
       font-size: 1rem;
 
+    }
+    h1 {
+      height: 10vh;
     }
     #language{
       width: 7vw;
@@ -192,7 +211,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 10vh;
+    height: 20vh;
     letter-spacing: 1px;
     line-height:2;
     background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);

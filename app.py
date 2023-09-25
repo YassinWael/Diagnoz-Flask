@@ -104,15 +104,7 @@ def diseases(sy):
     # Format the symptoms entered by the user
     symptoms = format_symptoms(sy)
     print(symptoms)
-    for i in symptoms:
-        if len(i)<4:
-            flash("List Can't Be Empty :)")
-            print(i)
-            return redirect(url_for('choose',letter="all"))
-        else:
-            print(len(i))
-            print("Else")
-            continue
+    
     
     # Get possible diagnoses based on the entered symptoms
     global diseases_final 
@@ -161,23 +153,35 @@ def choose(letter=""):
 
     # Sort the list of unique symptoms and render the choose page
     
+@app.route('/add_symptom/<symptom>/<status>')
+def add_symptom(symptom,status):
 
-
-@app.route('/add_symptom/<symptom>')
-def add_symptom(symptom):
-    
-    chosen_symptoms.append(symptom)
-    return redirect(url_for('choose',letter="all"))
-
-@app.route('/call_diseases') 
-def call_diseases():
-    """Called Only from the choose.html page , to call the diseases function."""
     global chosen_symptoms
-    return_value = redirect(url_for('diseases',sy=chosen_symptoms))
+    if status == 'add':
+        chosen_symptoms.append(symptom)
+        # for some reason every symptom is added to the list twice, so we need to remove it from the list by making it a unique set.
+        chosen_symptoms = list(set(chosen_symptoms))
+        print(f"added {symptom} to the list. The List is now : {chosen_symptoms}")
+    if status == 'delete_all':
+        chosen_symptoms = []
+        print(f"removed all symptoms from the list. The List is now : {chosen_symptoms}")
+    return redirect(request.referrer)
+
+@app.route('/call_diseases')
+def call_diseases():
+    """calls the diseases page from the choose.html. so that it can get it disease ready"""
+    global chosen_symptoms
+    print(chosen_symptoms)
+    if len(chosen_symptoms)>1:
+        chosen_symptoms_to_diseases = ','.join(chosen_symptoms)
+        print(chosen_symptoms_to_diseases)
+        return redirect(url_for("diseases",sy=chosen_symptoms_to_diseases))
     
-    chosen_symptoms = []
-    
-    return return_value
+    elif len(chosen_symptoms)==1:
+        return redirect(url_for("diseases",sy=chosen_symptoms))
+
+    return redirect(request.referrer)
+
 
 # Define a route for the contact page
 @app.route('/contact')
